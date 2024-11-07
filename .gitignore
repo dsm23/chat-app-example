@@ -8,6 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.next/
+out/
+build
 dist
 dist-ssr
 *.local
@@ -31,14 +34,17 @@ dist-ssr
 # @nabla/vite-plugin-eslint
 .eslintcache
 
+# Turbo
+.turbo
+
 # coverage
 coverage/
 
 # playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
 
 # storybook
 *storybook.log

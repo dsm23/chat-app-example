@@ -45,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Run Playwright tests
-        run: pnpm playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: pnpm e2e -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         env:
           # Required for firefox
           HOME: /root

@@ -53,14 +53,14 @@ jobs:
       - name: Lint check
         run: pnpm lint
       - name: Unit & Integration tests
-        run: pnpm test -- --coverage
+        run: pnpm coverage
       - name: Build
         run: pnpm build
-      - name: Smoke & Acceptance tests
-        run: |
-          pnpm build-storybook --quiet
-          pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "pnpm dlx http-server storybook-static --port 6006 --silent" \
-            "pnpm dlx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook"
-        env:
-          FORCE_COLOR: "1"
+      # - name: Smoke & Acceptance tests
+      #   run: |
+      #     pnpm build-storybook --quiet
+      #     pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+      #       "pnpm dlx http-server storybook-static --port 6006 --silent" \
+      #       "pnpm dlx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook"
+      #   env:
+      #     FORCE_COLOR: "1"

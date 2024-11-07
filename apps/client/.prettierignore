@@ -4,7 +4,7 @@ dist/
 node_modules/
 target/
 compiled/
-coverage
+coverage/
 
 lerna.json
 test-timings.json
