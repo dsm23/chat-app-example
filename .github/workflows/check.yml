@@ -15,14 +15,16 @@ env:
 jobs:
   check:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.48.2-noble
+    # container:
+    #   image: mcr.microsoft.com/playwright:v1.48.2-noble
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@v2
         with:
           egress-policy: audit
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -51,11 +53,11 @@ jobs:
       - name: Format check
         run: pnpm fmt.check
       - name: Lint check
-        run: pnpm lint
+        run: pnpm run lint --filter=...[origin/main]
       - name: Unit & Integration tests
-        run: pnpm coverage
-      - name: Build
-        run: pnpm build
+        run: pnpm run coverage --filter=...[origin/main]
+      - name: Build check
+        run: pnpm run build --filter=...[origin/main]
       # - name: Smoke & Acceptance tests
       #   run: |
       #     pnpm build-storybook --quiet
